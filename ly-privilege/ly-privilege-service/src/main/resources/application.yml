@@ -1,0 +1,38 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: privilege-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/heima?allowMultiQueries=true
+    username: root
+    password: 1234
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+mybatis:
+  type-aliases-package: com.leyou.privilege.entity
+  mapper-locations: mappers/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.leyou: debug
+mapper:
+  wrap-keyword: "`{0}`"
+ly:
+  encoder:
+    crypt:
+      secret: ${random.uuid}
+      strength: 10
+  jwt:
+    publicKeyPath: D:\progarm\ssh\id_rsa.pub
+    privilege:
+      id: 9
+      secret: ${spring.application.name}
+      headerName: privilege_token

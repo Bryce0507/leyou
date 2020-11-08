@@ -1,0 +1,28 @@
+server:
+  port: 8087
+spring:
+  application:
+    name: auth-service
+  redis:
+    host: 192.168.56.2
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+ly:
+  jwt:
+    privateKeyPath: D:\progarm\ssh\id_rsa
+    publicKeyPath: D:\progarm\ssh\id_rsa.pub
+    user:
+      expire: 30 #过期时间，单位分钟
+      cookieName: LY-TOKEN  #cookie名字
+      cookieDomain: leyou.com  #cookie的域   ：cookie的domain决定了cookie作用的域名，写成"leyou.com"可以让leyou.com下的所有二级域名共享cookie
+      minRefreshInterval: 15   #最小的刷新间隔，单位分钟
+    privilege:
+      id: 7
+      secret: ${spring.application.name}
+      headerName: privilege_token
+      expire: 90000 #微服务token过期时间，默认25小时

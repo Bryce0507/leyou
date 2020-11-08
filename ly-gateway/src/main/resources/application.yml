@@ -1,0 +1,87 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: ly-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+zuul:
+  prefix: /api #添加路由前缀
+  routes:
+    item-service: /item/**  #将商品微服务映射到/item/**
+    upload-service: /upload/**   #将上传服务映射到/load/**
+    search-service: /search/**   #将搜索服务映射到/search/**
+    user-service: /user/**  #将用户服务映射到/user/**
+    auth-service: /auth/**  #将授权服务映射到/auth/**
+    cart-service: /cart/**  #将购物车服务映射到/cart/**
+    order-service:
+      path: /order/**
+      serviceId: order-service
+      strip-prefix: false   #order会做为真实的路径
+    pay-service:
+      path: /pay/**
+      serviceId: order-service
+      strip-prefix: false   #order会做为真实的路径
+  sensitive-headers:
+hystrix:
+  command:
+    default:
+      excution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000   #熔断超时时长 6000毫秒
+
+ribbon:
+  ConnectTimeout: 500  #ribbon连接超时时长
+  ReadTimeout: 2000   #ribbon读取超时 时长
+  MaxAutoRetries: 0    #当前服务超时次数
+  MaxAutoRetriesNextServer: 1 # 切换服务重试次数
+  OkToRetryOnAllOperations: false # 是否对所有的请求方式都重试，只对get请求重试
+
+
+ly:
+  cors:
+    allowedOrigins:
+      - http://manage.leyou.com
+      - http://127.0.0.1:9001
+      - http://www.leyou.com
+    allowCredentials: true
+    allowedHeaders:
+      - "*"
+    allowedMethods:
+      - GET
+      - POST
+      - DELETE
+      - PUT
+      - OPTIONS
+      - HEAD
+    maxAge: 3600
+    filterPath: "/**"
+  jwt:
+    publicKeyPath: D:\progarm\ssh\id_rsa.pub
+    user:
+      cookieName: LY-TOKEN  #cookie名字
+      headerName: user_info  #用户的header名字
+    privilege:
+      id: 7 #服务id
+      secret: api-gateway  #服务密钥，默认是服务的名称
+      headerName: privilege_token
+  filter:
+    allowPaths:
+      - /api/auth/login
+      - /api/search
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /api/item
+      - /api/auth/authentication
+      - /api/pay
+      - /api/category
+
+
+
+
+
+

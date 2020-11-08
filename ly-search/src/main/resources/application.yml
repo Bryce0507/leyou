@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: search-service
+  data:
+#配置elasticSearch
+    elasticsearch:
+      cluster-name: leyou-elastic
+      cluster-nodes: 192.168.56.2:9301,192.168.56.2:9302,192.168.56.2:9303
+  jackson:
+    default-property-inclusion: non_null    # 配置json处理时忽略空值
+  rabbitmq:
+    host: 192.168.56.2
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
+  redis:
+    host: 192.168.56.2
+server:
+  port: 8083
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+
+
+
+
+
+
+
+
