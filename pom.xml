@@ -21,6 +21,7 @@
         <module>ly-privilege</module>
         <module>ly-cart</module>
         <module>ly-order</module>
+        <module>ly-rocketmq</module>
     </modules>
     <packaging>pom</packaging>
 
