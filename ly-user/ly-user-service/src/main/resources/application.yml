@@ -15,6 +15,17 @@ spring:
     username: leyou
     password: leyou
     virtual-host: /leyou
+    listener:
+      simple:
+        retry:
+          #开启重试
+          enabled: true
+          #重试次数
+          max-attempts: 3
+          #间隔时间
+          max-interval: 2000
+        default-requeue-rejected: false
+        acknowledge-mode: manual
 eureka:
   client:
     service-url:
