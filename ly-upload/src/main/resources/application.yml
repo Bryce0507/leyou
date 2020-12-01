@@ -16,8 +16,8 @@ eureka:
 
 ly:
   oss:
-    accessKeyId: LTAIGnia8Cuu1m1p
-    accessKeyService: wD7E31R0yxaTBfzaMGNwnLfYJKALdX
+    accessKeyId: 
+    accessKeyService:
     host: http://ly-image-z.oss-cn-shanghai.aliyuncs.com # 访问oss的域名，很重要
     endpoint: oss-cn-shanghai.aliyuncs.com
     dir: ""
