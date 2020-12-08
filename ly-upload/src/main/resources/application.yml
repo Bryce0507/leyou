@@ -16,7 +16,7 @@ eureka:
 
 ly:
   oss:
-    accessKeyId: 
+    accessKeyId:
     accessKeyService:
     host: http://ly-image-z.oss-cn-shanghai.aliyuncs.com # 访问oss的域名，很重要
     endpoint: oss-cn-shanghai.aliyuncs.com
